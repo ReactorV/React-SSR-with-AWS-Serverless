@@ -6,15 +6,19 @@ import './App.css';
 import { ListItem } from './components/ListItem';
 import { List } from './components/List';
 import { Details } from './components/Details';
+import { AppProvider } from "./components/context";
 
-function App() {
+const TEMP_DATA = {}
+function App({ initData }) {
   return (
-    <div className="App">
-      <Routes>
-        <Route path='/' element={<List />} />
-        <Route path='/user/:id' element={<Details />} />
-      </Routes>
-    </div>
+    <AppProvider initData={initData ||  TEMP_DATA}>
+      <div className="App">
+        <Routes>
+          <Route path='/' element={<List />} />
+          <Route path='/user/:id' element={<Details />} />
+        </Routes>
+      </div>
+    </AppProvider>
   );
 }
 
