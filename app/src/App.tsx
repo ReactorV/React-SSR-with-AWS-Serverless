@@ -6,9 +6,10 @@ import './App.css';
 import { ListItem } from './components/ListItem';
 import { List } from './components/List';
 import { Details } from './components/Details';
-import { AppProvider } from "./components/context";
+import { AppProvider } from './components/context';
 
-const TEMP_DATA = {}
+const TEMP_DATA = {};
+
 function App({ initData }) {
   return (
     <AppProvider initData={initData ||  TEMP_DATA}>
