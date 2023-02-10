@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import './App.css';
@@ -8,11 +8,49 @@ import { List } from './components/List';
 import { Details } from './components/Details';
 import { AppProvider } from './components/context';
 
-const TEMP_DATA = {};
+export interface IUser {
+    id: number,
+    name: string,
+    username: string,
+    email: string,
+    address: {
+        street: string,
+        suite: string,
+        city: string,
+        zipcode: string,
+        geo: {
+            lat: string,
+            lng: string,
+        }
+    },
+    phone: string,
+    website: string,
+    company: {
+        name: string,
+        catchPhrase: string,
+        bs: string
+    }
+}
 
-function App({ initData }) {
+export interface IAppContext {
+    users: IUser[]
+    setUsers: (users: any) => void
+}
+
+function App() {
+    const [users, setUsers] = useState<IUser[]>([])
+
+    useEffect(() => {
+        fetch('https://jsonplaceholder.typicode.com/users')
+            .then(response => response.json())
+            .then(json => {
+                console.log(json)
+                setUsers(json)
+            })
+    }, [])
+
   return (
-    <AppProvider initData={initData ||  TEMP_DATA}>
+    <AppProvider users={users} setUsers={setUsers} >
       <div className="App">
         <Routes>
           <Route path='/' element={<List />} />
