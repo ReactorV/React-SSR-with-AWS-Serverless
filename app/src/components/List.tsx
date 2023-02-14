@@ -4,8 +4,6 @@ import { AppContext } from "./context";
 import { ListItem } from './ListItem';
 import { Loader } from './Loader';
 
-export type { IUser } from '../App'
-
 export const List = () => {
     const { users } = useContext(AppContext);
 

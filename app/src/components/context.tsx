@@ -1,6 +1,18 @@
 import { createContext, useState, useEffect, Dispatch, SetStateAction } from 'react';
 
-export const AppContext = createContext({ users: [], setUsers: (users: any) => {} })
+import { IUser } from '../App'
+
+interface IAppContext {
+    users: IUser[],
+    setUsers: (users: any) => void,
+}
+
+const initContext: IAppContext = {
+    users: [],
+    setUsers: (users: any) => {}
+}
+
+export const AppContext = createContext(initContext)
 
 // @ts-ignore
 export const AppProvider = ({ children, users, setUsers }) => {
