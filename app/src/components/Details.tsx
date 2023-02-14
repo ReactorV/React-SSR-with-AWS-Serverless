@@ -22,31 +22,31 @@ export const Details = () => {
         )
     }
 
-    const initials = `${user.firstName[0].toUpperCase()}${user.lastName[0].toUpperCase()}`;
+    const initials = `${user.name[0].toUpperCase()}${user.username[0].toUpperCase()}`;
 
     return (
         <Card>
             <CardHeader
                 avatar={
-                    <Avatar aria-label={initials} style={{backgroundColor:`rgb(${parseInt(Math.random()*255)},${parseInt(Math.random()*255)},${parseInt(Math.random()*255)})`}}>
+                    <Avatar aria-label={initials} style={{backgroundColor:`rgb(${parseInt(String(Math.random() * 255))},${parseInt(String(Math.random() * 255))},${parseInt(String(Math.random() * 255))})`}}>
                         {initials}
                     </Avatar>
                 }
-                title={`${user.firstName} ${user.lastName}`}
-                subheader={user.country}
+                title={`${user.name} ${user.username}`}
+                subheader={user.address?.city}
             />
             <CardMedia
                 component="img"
                 height="194"
-                image={user.url}
+                image={user.website}
                 alt="Image"
             />
             <CardContent>
                 <Typography variant="body2" color="text.secondary">
-                    <div>{user.description}</div>
+                    <div>{user.company.catchPhrase}</div>
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                    <div>{user.createdAt}</div>
+                    <div>{user.email}</div>
                 </Typography>
             </CardContent>
             <CardActions disableSpacing>
