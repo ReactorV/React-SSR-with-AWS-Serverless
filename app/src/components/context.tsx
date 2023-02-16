@@ -16,8 +16,8 @@ export const AppContext = createContext(initContext)
 
 // @ts-ignore
 export const AppProvider = ({ children, users, setUsers }) => {
-
+debugger
     return (
-        <AppContext.Provider value={{ ...users, setUsers }}>{children}</AppContext.Provider>
+        <AppContext.Provider value={{ users, setUsers }}>{children}</AppContext.Provider>
     )
 }

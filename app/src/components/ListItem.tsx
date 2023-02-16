@@ -11,6 +11,7 @@ interface IProps {
 }
 export const ListItem = ({ user }: IProps) => {
     const initials = `${user.name.toUpperCase()}${user.username.toUpperCase()}`
+
     return (
         <Card component={Link} to={`/user/${user.id}`}>
             <CardHeader

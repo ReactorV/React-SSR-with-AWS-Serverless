@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import './App.css';
@@ -44,13 +44,14 @@ function App() {
         fetch('https://jsonplaceholder.typicode.com/users')
             .then(response => response.json())
             .then(json => {
-                console.log(json)
+                console.log("json :", json)
                 setUsers(json)
             })
     }, [])
-
+    console.log("users", users);
+    debugger
   return (
-    <AppProvider users={users} setUsers={setUsers} >
+    <AppProvider users={users} setUsers={setUsers}>
       <div className="App">
         <Routes>
           <Route path='/' element={<List />} />
