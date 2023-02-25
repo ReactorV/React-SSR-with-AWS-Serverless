@@ -48,7 +48,7 @@ function App() {
                 setUsers(json)
             })
     }, [])
-    console.log("users", users);
+    console.log("users", users)
     debugger
   return (
     <AppProvider users={users} setUsers={setUsers}>

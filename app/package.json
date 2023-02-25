@@ -2,6 +2,8 @@
   "name": "app",
   "version": "0.1.0",
   "private": true,
+  "author": "Vadzim Voitkus",
+  "type": "module",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
@@ -17,25 +19,19 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.8.1",
-    "react-scripts": "5.0.1",
     "sass": "^1.58.1",
     "typescript": "^4.4.2",
     "web-vitals": "^2.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.{js,jsx,ts,tsx,json}",
     "lint:fix": "eslint --fix 'src/**/*.{js,jsx,ts,tsx,json}'",
-    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "format": "prettier --config ./.prettierrc 'src/**/*.{js,jsx,ts,tsx,json}' --write",
+    "build": "vite build",
+    "vite": "vite --host --open",
+    "preview": "vite preview"
   },
   "browserslist": {
     "production": [
@@ -49,17 +45,36 @@
       "last 1 safari version"
     ]
   },
+  "sideEffects": [
+    "**/*.css",
+    "**/*.scss",
+    "**/*.jpeg",
+    "**/*.jpg",
+    "**/*.svg",
+    "**/*.png",
+    "**/*.gif",
+    "i18n.ts"
+  ],
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.52.0",
     "@typescript-eslint/parser": "^5.52.0",
+    "@vitejs/plugin-react": "^3.1.0",
+    "babel-plugin-styled-components": "^2.0.7",
     "eslint": "^8.34.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-config-react-app": "^7.0.1",
+    "eslint-import-resolver-typescript": "^3.5.3",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jest": "^27.2.1",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "prettier": "^2.8.4"
+    "prettier": "^2.8.4",
+    "vite": "^4.1.4",
+    "vite-plugin-checker": "^0.5.6",
+    "vite-plugin-html": "^3.2.0",
+    "vite-tsconfig-paths": "^4.0.5"
   }
 }
