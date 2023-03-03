@@ -1,4 +1,5 @@
 const path = require('path');
+// import * as path from 'path';
 
 module.exports = {
     env: {
@@ -17,10 +18,6 @@ module.exports = {
     ],
     overrides: [],
     parser: "@typescript-eslint/parser",
-   /* parserOptions: {
-        "ecmaVersion": "latest",
-        "sourceType": "module"
-    },*/
     parserOptions: {
         project: path.resolve(__dirname, 'tsconfig.json'),
     },
@@ -73,7 +70,7 @@ module.exports = {
         '@typescript-eslint/array-type': 'error',
         '@typescript-eslint/no-explicit-any': 'warn',
         'no-underscore-dangle': ['error', { allow: ['_id'] }],
-        semi: ['error', 'always'],
+        semi: "off",
         'prettier/prettier': [
             'error',
             {
@@ -84,6 +81,7 @@ module.exports = {
             'warn',
             { vars: 'all', args: 'all', argsIgnorePattern: '^_', ignoreRestSiblings: true },
         ],
+        '@typescript-eslint/no-unused-vars': ["warn"],
         'linebreak-style': 'off',
         'implicit-arrow-linebreak': 'off',
         'max-len': 'off',
