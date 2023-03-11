@@ -16,6 +16,5 @@ const initContext: IAppContext = {
 export const AppContext = createContext(initContext)
 
 export const AppProvider = ({ children, users, setUsers }: IAppContext) => {
-  debugger
   return <AppContext.Provider value={{ users, setUsers }}>{children}</AppContext.Provider>
 }

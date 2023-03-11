@@ -37,7 +37,7 @@ export interface IAppContext {
   setUsers: (users: any) => void
 }
 
-function App() {
+export function App() {
   const [users, setUsers] = useState<IUser[]>([])
 
   useEffect(() => {
@@ -61,5 +61,3 @@ function App() {
     </AppProvider>
   )
 }
-
-export default App
