@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { Routes, Route } from 'react-router-dom'
+import { win } from '../global'
 
 import './App.css'
 
@@ -48,10 +49,9 @@ export function App() {
         setUsers(json)
       })
   }, [])
-  console.log('users', users)
 
   return (
-    <AppProvider users={users} setUsers={setUsers}>
+    <AppProvider users={win && win.__data || users} setUsers={setUsers}>
       <div className="App">
         <Routes>
           <Route path="/" element={<List />} />

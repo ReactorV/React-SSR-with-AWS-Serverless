@@ -2,7 +2,7 @@ import React from 'react'
 import { App } from './App'
 import { StaticRouter } from 'react-router-dom/server'
 
-export const SSRApp = (props: any) => {
+export function SSRApp(props: any) {
   const { url, ...data } = props
 
   return (
