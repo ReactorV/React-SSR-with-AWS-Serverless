@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { Routes, Route } from 'react-router-dom'
+import { win } from '../global'
 
 import './App.css'
 
@@ -37,7 +38,7 @@ export interface IAppContext {
   setUsers: (users: any) => void
 }
 
-function App() {
+export function App() {
   const [users, setUsers] = useState<IUser[]>([])
 
   useEffect(() => {
@@ -48,10 +49,9 @@ function App() {
         setUsers(json)
       })
   }, [])
-  console.log('users', users)
 
   return (
-    <AppProvider users={users} setUsers={setUsers}>
+    <AppProvider users={win && win.__data || users} setUsers={setUsers}>
       <div className="App">
         <Routes>
           <Route path="/" element={<List />} />
@@ -61,5 +61,3 @@ function App() {
     </AppProvider>
   )
 }
-
-export default App
