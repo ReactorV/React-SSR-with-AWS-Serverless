@@ -28,6 +28,7 @@ module.exports = {
         'react/require-default-props': 'off',
         'react/jsx-props-no-spreading': 'off',
         'react/jsx-filename-extension': 'warn',
+        "react/jsx-no-constructed-context-values": 'warn',
         'react/jsx-uses-react': 'off',
         'react/react-in-jsx-scope': 'off',
         'react/function-component-definition': 'off',
@@ -69,6 +70,7 @@ module.exports = {
         '@typescript-eslint/comma-dangle': 'off',
         '@typescript-eslint/array-type': 'error',
         '@typescript-eslint/no-explicit-any': 'warn',
+        '@typescript-eslint/no-unused-vars': 'off',
         'no-underscore-dangle': ['error', { allow: ['_id'] }],
         semi: "off",
         'prettier/prettier': [
@@ -81,7 +83,6 @@ module.exports = {
             'warn',
             { vars: 'all', args: 'all', argsIgnorePattern: '^_', ignoreRestSiblings: true },
         ],
-        '@typescript-eslint/no-unused-vars': ["warn"],
         'linebreak-style': 'off',
         'implicit-arrow-linebreak': 'off',
         'max-len': 'off',
