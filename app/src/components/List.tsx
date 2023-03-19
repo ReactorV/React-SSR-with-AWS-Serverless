@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import Box from '@mui/material/Box'
 
+// eslint-disable-next-line import/no-cycle
 import { AppContext } from './context'
 import { ListItem } from './ListItem'
 import { Loader } from './Loader'

@@ -6,12 +6,14 @@
 .pnp.js
 
 /.idea
+../.idea
 
 # testing
 /coverage
 
 # production
 /build
+/build-prod
 /dist
 
 # misc

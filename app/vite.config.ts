@@ -43,7 +43,7 @@ export default defineConfig({
       },
     }),
   ],
-  publicDir: './public',
+  publicDir: './publicVite',
   /*define: {
     'process.env': { ...envConfig, ...envLocalConfig },
   },*/

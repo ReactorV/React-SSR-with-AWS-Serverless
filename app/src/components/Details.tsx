@@ -10,12 +10,13 @@ import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
 
+// eslint-disable-next-line import/no-cycle
 import { AppContext } from './context'
 
 export const Details = () => {
   const { id } = useParams()
   const { users } = useContext(AppContext)
-  const user = users.find((user) => Number(user.id) === Number(id))
+  const user = users.find((userItem) => Number(userItem.id) === Number(id))
 
   if (!user) {
     return <div>User not found</div>
@@ -30,9 +31,10 @@ export const Details = () => {
           <Avatar
             aria-label={initials}
             style={{
-              backgroundColor: `rgb(${parseInt(String(Math.random() * 255))},${parseInt(
-                String(Math.random() * 255)
-              )},${parseInt(String(Math.random() * 255))})`,
+              backgroundColor: `rgb(${parseInt(String(Math.random() * 255), 10)},${parseInt(
+                String(Math.random() * 255),
+                10
+              )},${parseInt(String(Math.random() * 255), 10)})`,
             }}
           >
             {initials}

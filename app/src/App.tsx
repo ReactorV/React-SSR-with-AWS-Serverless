@@ -1,10 +1,14 @@
-import React, { useEffect, useState, useContext } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import { win } from '../global'
+// eslint-disable-next-line import/order
+import React, { useEffect, useState } from 'react'
 
 import './App.css'
 
-import { ListItem } from './components/ListItem'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import * as win from 'global'
+
+// eslint-disable-next-line import/no-cycle
 import { List } from './components/List'
 import { Details } from './components/Details'
 import { AppProvider } from './components/context'
@@ -51,7 +55,8 @@ export function App() {
   }, [])
 
   return (
-    <AppProvider users={win && win.__data || users} setUsers={setUsers}>
+    // eslint-disable-next-line no-underscore-dangle
+    <AppProvider users={(win && win.__data) || users} setUsers={setUsers}>
       <div className="App">
         <Routes>
           <Route path="/" element={<List />} />

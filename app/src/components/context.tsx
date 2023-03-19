@@ -1,6 +1,7 @@
-import { createContext, useState, useEffect, Dispatch, SetStateAction } from 'react'
+import { createContext } from 'react'
 
-import { IUser } from '../App'
+// eslint-disable-next-line import/no-cycle
+import { IUser } from '@/App'
 
 interface IAppContext {
   users: IUser[]
@@ -15,6 +16,6 @@ const initContext: IAppContext = {
 
 export const AppContext = createContext(initContext)
 
-export const AppProvider = ({ children, users, setUsers }: IAppContext) => {
-  return <AppContext.Provider value={{ users, setUsers }}>{children}</AppContext.Provider>
-}
+export const AppProvider = ({ children, users, setUsers }: IAppContext) => (
+  <AppContext.Provider value={{ users, setUsers }}>{children}</AppContext.Provider>
+)

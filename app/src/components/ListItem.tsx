@@ -5,6 +5,7 @@ import CardHeader from '@mui/material/CardHeader'
 import CardMedia from '@mui/material/CardMedia'
 import Avatar from '@mui/material/Avatar'
 
+// eslint-disable-next-line import/no-cycle
 import { IUser } from '../App'
 
 interface IProps {
@@ -20,9 +21,10 @@ export const ListItem = ({ user }: IProps) => {
           <Avatar
             aria-label={initials}
             style={{
-              backgroundColor: `rgb(${parseInt(String(Math.random() * 255))},${parseInt(
-                String(Math.random() * 255)
-              )},${parseInt(String(Math.random() * 255))})`,
+              backgroundColor: `rgb(${parseInt(String(Math.random() * 255), 10)},${parseInt(
+                String(Math.random() * 255),
+                10
+              )},${parseInt(String(Math.random() * 255), 10)})`,
             }}
           >
             {initials}
