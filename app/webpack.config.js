@@ -3,11 +3,11 @@ const path = require('path');
 require('dotenv').config()
 const clientManifest = require('./build-prod/asset-manifest.json'); // reactapp generated assets mappings after client build
 
-const isLocal = !process.env.PUBLIC_URL
+const isLocal = process.env.PUBLIC_URL
 console.log('process.env.PUBLIC_URL',process.env.PUBLIC_URL)
 module.exports = {
 
-    entry: isLocal ? "./ssr-local.js" : "./ssr.js",
+    entry: isLocal ? "./ssr-local.js" : "./ssr.tsx",
     target: "node",
     externals: [],
 
@@ -23,6 +23,11 @@ module.exports = {
 
     module: {
         rules: [
+            {
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/,
+            },
             {
                 test: /\.(js|jsx|mjs)$/,
                 use: 'babel-loader',
@@ -56,6 +61,9 @@ module.exports = {
                 use: 'ignore-loader', // ignore loader for css and scss because they are handled in the client build
             },
         ],
+    },
+    resolve: {
+        extensions: ['.tsx', '.ts', '.js'],
     },
     plugins: [
         new webpack.DefinePlugin({

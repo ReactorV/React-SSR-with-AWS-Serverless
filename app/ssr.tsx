@@ -2,9 +2,10 @@ import { renderToString } from 'react-dom/server'
 import * as zlib from "zlib"
 
 import { SSRApp } from './src/SSRApp'
-import indexFile from './dist/index.html'
+// @ts-ignore
+import indexFile from './build-prod/index.html';
 
-const gzip = (html) => new Promise((response, reject) => {
+const gzip = (html: string) => new Promise((response, reject) => {
   const input = Buffer.from(html)
 
   zlib.deflate(input, (error, result) => {
@@ -19,7 +20,7 @@ const gzip = (html) => new Promise((response, reject) => {
 const getData = async () => {
   return await fetch('https://jsonplaceholder.typicode.com/users').then((response) => response.json())
 }
-const getHtml = async (url: string, compress) => {
+const getHtml = async (url: string, compress: boolean): Promise<string> => {
   const data = await getData()
 
   const app = renderToString(<SSRApp url={url} data={data} />)
@@ -31,7 +32,7 @@ const getHtml = async (url: string, compress) => {
   return compress ? gzip(html) : html
 }
 
-export const edgeLambdaHandler = async (event) => {
+export const edgeLambdaHandler = async (event: { Records: [{ cf: { request: { uri: string }}}] }) => {
   try {
     const request = event.Records[0].cf.request;
 
@@ -64,7 +65,7 @@ export const edgeLambdaHandler = async (event) => {
       body,
     }
   } catch (error) {
-    console.log(`Error ${error.message}`);
+    console.log(`Error ${(error as Error)?.message}`);
     return `Error ${error}`;
   }
 };

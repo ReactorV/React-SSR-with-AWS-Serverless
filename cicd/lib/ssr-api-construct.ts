@@ -17,7 +17,7 @@ export class SsrApiConstruct extends Construct {
         super(scope, id);
 
         const ssrLambdaApi = new lambda.Function(scope, 'ssrApi', {
-            runtime: lambda.Runtime.NODEJS_16_X,
+            runtime: lambda.Runtime.NODEJS_14_X,
             code: lambda.Code.fromAsset('../app/build-ssr'),
             handler: 'ssr.apiHandler'
         })

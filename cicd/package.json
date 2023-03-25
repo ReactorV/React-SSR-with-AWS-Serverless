@@ -1,27 +1,37 @@
 {
-  "name": "cicd",
+  "name": "app",
   "version": "0.1.0",
+  "license": "MIT",
   "bin": {
-    "cicd": "bin/cicd.js"
+    "app": "bin/app.js"
   },
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
     "test": "jest",
-    "cdk": "cdk"
+    "cdk": "cdk",
+    "build:ssr": "cd ../app && yarn build:ssr",
+    "build:static": "cd ../app && yarn build:prod",
+    "deploy-api": "cross-env PUBLIC_URL=https://d1oorxe807rdxf.cloudfront.net yarn build:static && cross-env PUBLIC_URL=https://d1oorxe807rdxf.cloudfront.net yarn build:ssr && yarn cdk deploy AppSsrApiStack",
+    "deploy-edge": "cross-env PUBLIC_URL=https://dhdcjwzowqxna.cloudfront.net yarn build:static && cross-env PUBLIC_URL=https://dhdcjwzowqxna.cloudfront.net yarn build:ssr && yarn cdk deploy AppSsrEdgeStack",
+    "synth": "yarn cdk synth AppSsrApiStack && sam local start-api -t ./cdk.out/AppSsrApiStack.template.json",
+    "start-local": "sam local start-api -t ./cdk.out/AppSsrApiStack.template.json",
+    "build-start": "yarn build:ssr && yarn synth && yarn start-local",
+    "destroy": "yarn cdk destroy"
   },
   "devDependencies": {
-    "@types/jest": "^29.4.0",
-    "@types/node": "18.11.18",
-    "jest": "^29.4.1",
-    "ts-jest": "^29.0.5",
-    "aws-cdk": "2.63.1",
-    "ts-node": "^10.9.1",
-    "typescript": "~4.9.4"
+    "@types/jest": "^26.0.10",
+    "@types/node": "10.17.27",
+    "aws-cdk": "2.10.0",
+    "cross-env": "^7.0.3",
+    "jest": "^26.4.2",
+    "ts-jest": "^26.2.0",
+    "ts-node": "^9.0.0",
+    "typescript": "~3.9.7"
   },
   "dependencies": {
-    "aws-cdk-lib": "2.63.1",
+    "aws-cdk-lib": "2.10.0",
     "constructs": "^10.0.0",
-    "source-map-support": "^0.5.21"
+    "source-map-support": "^0.5.16"
   }
 }
